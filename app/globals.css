@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --indian-blue: #1A3C8A;
+  --indian-orange: #FF9933;
+  --golden-yellow: #FFD700;
+  --light-blue: #E6ECF9;
+  --stadium-shadow: rgba(0, 0, 0, 0.3);
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 71% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 71% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 71% 15%;
+    --primary: 220 71% 33%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 220 60% 95%;
+    --secondary-foreground: 220 71% 15%;
+    --muted: 220 60% 95%;
+    --muted-foreground: 220 71% 25%;
+    --accent: 25 100% 60%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 220 71% 33%;
+    --chart-1: 220 71% 50%;
+    --chart-2: 25 100% 60%;
+    --chart-3: 51 100% 50%;
+    --chart-4: 220 60% 70%;
+    --chart-5: 25 90% 70%;
+    --radius: 0.5rem;
+    --chart-primary: 220 71% 33%;
+    /* Semantic colors */
+    --text-primary: 220 71% 15%;
+    --text-secondary: 220 71% 25%;
+    --bg-primary: 0 0% 100%;
+    --bg-secondary: 220 60% 98%;
+  }
+  
+  .dark {
+    --background: 220 71% 8%;
+    --foreground: 0 0% 98%;
+    --card: 220 71% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 71% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 71% 15%;
+    --secondary: 220 50% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 50% 15%;
+    --muted-foreground: 0 0% 85%;
+    --accent: 25 100% 60%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 50% 15%;
+    --input: 220 50% 15%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 71% 60%;
+    --chart-2: 25 100% 70%;
+    --chart-3: 51 100% 60%;
+    --chart-4: 220 60% 80%;
+    --chart-5: 25 90% 80%;
+    --chart-primary: 25 100% 60%;
+    /* Semantic colors for dark mode */
+    --text-primary: 0 0% 98%;
+    --text-secondary: 0 0% 85%;
+    --bg-primary: 220 71% 8%;
+    --bg-secondary: 220 50% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.cricket-field-bg {
+  background: linear-gradient(45deg, #1A3C8A 25%, transparent 25%), 
+              linear-gradient(-45deg, #1A3C8A 25%, transparent 25%), 
+              linear-gradient(45deg, transparent 75%, #1A3C8A 75%), 
+              linear-gradient(-45deg, transparent 75%, #1A3C8A 75%);
+  background-size: 30px 30px;
+  background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+}
+
+.pitch-lines {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 98px,
+    rgba(255, 255, 255, 0.1) 100px
+  );
+}
+
+.stadium-glow {
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.1),
+    0 0 40px rgba(255, 215, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.stadium-glow:hover {
+  box-shadow: 
+    0 0 25px rgba(255, 215, 0, 0.2),
+    0 0 50px rgba(255, 215, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.cricket-ball-bounce {
+  animation: bounce 2s infinite;
+}
+
+.cricket-bat-swing {
+  animation: swing 3s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0);
+  }
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0);
+  }
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+@keyframes swing {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(25deg); }
+}
+
+.scoreboard-flip {
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.scoreboard-flip:hover {
+  transform: rotateY(10deg);
+}
